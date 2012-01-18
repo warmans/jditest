@@ -1,0 +1,30 @@
+<div class="page-header">
+    <h1>Incident #<?php echo $this->record->id;?> Report</h1>
+</div>
+<div class="controls"><a style="float:right" class="btn"href="/incident/update/<?php echo $this->record->id;?>">Edit</a></div>
+<h3>Date Occurred</h3>
+<p><?php echo $this->record->date_occurred;?></p>
+
+<h3>Date Resolved</h3>
+<p><?php echo $this->record->date_resolved;?></p>
+
+<h3>General Explanation</h3>
+<p><?php echo $this->record->explanation;?></p>
+
+<h3>Measures Taken</h3>
+<p><?php echo $this->record->measures_taken;?></p>
+
+<div class="page-header">
+    <h2>Comments</h2>
+</div>
+<?php
+foreach($this->comments as $comment):
+    echo '<div class="comment">';
+    echo $comment->content;
+    echo '<div class="author">- '.$comment->author.' | posted '.$comment->date_created.'</div>';
+    echo '</div>';
+endforeach;
+?>
+<h2>Add Comment</h2>
+<?php
+echo $this->commentForm;

@@ -1,0 +1,73 @@
+<?php echo $this->doctype()."\n"; ?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Incident Tracker</title>
+  
+  <!--JS-->
+  <script type="text/javascript" src="/static/js/jquery-1.7.1.min.js"></script>
+  <script type="text/javascript" src="/static/js/jquery.validate.js"></script>
+  <script type="text/javascript" src="/static/js/jquery-ui-1.8.17.custom.min.js"></script>
+  <script type="text/javascript" src="/static/js/main.js"></script>
+  
+  <!--CSS-->
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/static/css/flick/jquery-ui-1.8.17.custom.css" />
+  <link rel="stylesheet" href="/static/css/screen.css" />
+  
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="row">
+                <div class="span16">
+                    
+                    <div class="mast-head">Incident Tracker</div>
+                    
+                    <ul class="nav">
+                        <li class="active"><a href="/">Home</a></li>
+                        <li class="seperator"></li>
+                        <li><a href="#about">About</a></li>
+                        <li class="seperator"></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content-padding">
+                <div class="row">
+                    <div class="span3">
+                        <div class="sub-nav">
+                            <div class="heading">Site Navigation</div>
+                            <ul>
+                                <li class="active"><a href="/incident/create">Add Incident</a></li>
+                                <li><a href="/">Most Recent Incidents</a></li>
+                                <li><a href="/incident/archive">Archive</a></li>
+                            </ul>
+                        </div>
+                        <?php if($this->helpContent): ?>
+                            <div class="sub-nav">
+                                <div class="heading"><?php echo $this->helpTitle ?: 'Quick Help';?></div>
+                                <p><?php echo $this->helpContent;?></p>
+                            </div>
+                        <?php endif ?>
+                    </div>
+                    <div class="span12 content-panel">
+                        <?php
+                        foreach($this->messages as $message):
+                            if(is_array($message)){
+                                echo '<div class="alert-message '.$message['class'].'">';
+                                echo $message['msg'];
+                                echo '</div>';
+                            } else {
+                                echo '<div clas="alert-message info">'.$message.'</div>';
+                            }
+                        endforeach;
+                        ?>
+                        <?php echo $this->layout()->content; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

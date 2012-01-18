@@ -1,0 +1,43 @@
+<div class="page-header">
+    <h1>All Incidents</h1>
+</div>
+
+<table class="condensed-table zebra-striped">
+    <tr>
+        <th>ID</th>
+        <th>Logged</th>
+        <th>Downtime</th>
+        <th>Description</th>
+        <th style="width : 120px;">Actions</th>
+    </tr>
+    <?php
+        foreach($this->records as $record):
+            echo '<tr>';
+            echo '<td>'.$record->id.'</td>';
+            echo '<td>'.$record->date_created.'</td>';
+            echo '<td>'.Util_Timestamp::secondsToLabel($record->elapsed_time).'</td>';
+            echo '<td>'.Util_String::shortenString($record->explanation).'</td>';
+            echo '<td><a class="btn" href="/incident/read/'.$record->id.'">View</a> <a class="btn" href="/incident/update/'.$record->id.'">Edit</a></td>';
+            echo '</tr>';
+        endforeach;
+    ?>
+</table>
+<div class="pagination">
+    <ul>
+        <li class="prev <?php echo ($this->page === 0) ? 'disabled' : '';?>">
+            <a href="/incident/archive/page/<?php echo max(0, $this->page-1);?>">&larr; Previous</a>
+        </li>
+        <?php 
+            for($i=0; $i < (ceil($this->totalRecords / $this->numPerPage)); $i++):
+                ?>
+                <li class="<?php echo ($i == $this->page) ? 'active' : '';?>">
+                    <a href="/incident/archive/page/<?php echo $i;?>"><?php echo $i;?></a>
+                </li>
+                <?php
+            endfor;
+        ?>
+        <li class="next <?php echo ($this->totalRecords <= $this->numPerPage * $this->page+1) ? 'disabled' : '';?>">
+            <a href="/incident/archive/page/<?php echo $this->page+1;?>">Next &rarr;</a>
+        </li>
+    </ul>
+</div>

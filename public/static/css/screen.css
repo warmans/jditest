@@ -1,0 +1,235 @@
+body {
+    font-family: "Trebuchet MS", sans-serif;
+    background : #585858 url('/static/images/body-bg.jpg') top center repeat-x;
+}
+
+h1, h2 {
+    font-weight: normal;
+    color : #8F1C85;
+}
+
+.quiet {
+    font-size : 0.8em;
+}
+
+.content-padding {
+    padding : 20px 20px 20px 20px;
+}
+
+.content {
+    margin-top : 10px;
+    background-color : #fff;
+    
+    -webkit-box-shadow: 0px 0px 5px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    0px 0px 5px rgba(50, 50, 50, 0.75);
+    box-shadow:         0px 0px 5px rgba(50, 50, 50, 0.75);
+    
+    border-radius: 12px; 
+    -moz-border-radius: 12px; 
+    -webkit-border-radius: 12px;
+}
+
+.mast-head{
+    height : 130px;
+    line-height : 140px;
+    font-size : 3em;
+    color : #8F1C85;
+}
+
+.nav {
+    width : 100%;
+    height: 36px;
+    background : #D4D4D4 url('/static/images/nav-background.jpg') center left repeat-x;
+}
+
+.nav a {
+    height: 36px;
+    line-height: 36px;
+    padding : 0px 10px !important;
+    background : none !important;
+    color : #585858;
+    font-weight : bold;
+}
+
+.nav a:hover {
+    color : #8F1C85;
+} 
+
+.nav .seperator {
+    width : 30px;
+    height : 36px;
+    background : url('/static/images/nav-seperator.jpg') center center no-repeat;
+}
+
+.content-panel {
+    width : 720px;
+    background-color : #EBEBEB;
+    margin-left : 0px !important;
+    padding : 10px;
+    min-height: 500px;
+    
+    border-radius: 12px; 
+    -moz-border-radius: 12px; 
+    -webkit-border-radius: 12px;
+    
+    -webkit-box-shadow: 0px 0px 5px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    0px 0px 5px rgba(50, 50, 50, 0.75);
+    box-shadow:         0px 0px 5px rgba(50, 50, 50, 0.75);
+}
+
+.sub-nav {
+    background-color : #EBEBEB;
+    margin-top : 30px;  
+    font-size : 0.9em;
+    
+    border-radius: 12px 0px 0px 12px; 
+    -moz-border-radius: 12px 0px 0px 12px; 
+    -webkit-border-radius: 12px 0px 0px 12px; 
+}
+
+.sub-nav .heading {
+    width : 140px;
+    height : 32px;
+    padding : 0px 10px;
+    line-height : 32px;
+    background-color : #f00;
+    background: url('/static/images/subnav-heading-bg.png') top left repeat-x;
+    color : #fff;
+    border-radius: 12px 0px 0px 0px; 
+    -moz-border-radius: 12px 0px 0px 0px; 
+    -webkit-border-radius: 12px 0px 0px 0px; 
+    border : 1px solid #000;
+}
+
+.sub-nav ul {
+    margin : 0px;
+    list-style: none;
+}
+
+.sub-nav li {
+    padding : 8px;
+    border-top : 1px solid #ccc;
+}
+
+.sub-nav p {
+    padding : 10px;
+}
+
+/*Forms*/
+
+.content-panel .zend_form dt {
+    float : left;
+    width : 225px;
+    clear : none;
+}
+.content-panel .zend_form .input {
+    margin-left : 0px;
+}
+
+.content-panel .zend_form .form-right {
+    margin-left : 250px;
+}
+
+.content-panel .zend_form label {
+        color : #8F1C85;
+}
+
+.content-panel .zend_form label,
+.content-panel .zend_form dt {
+    font-size : 1.3em;
+    width : 230px;
+    margin-right: 20px;
+}
+
+.content-panel .zend_form textarea {
+    height : 200px;
+}
+
+/*Form errors*/
+
+.content-panel .zend_form .errors ul {
+    list-style: none;
+    margin : 0px;
+}
+
+.content-panel .zend_form .errors li {
+    width : 100%;
+    text-align: left;
+}
+
+.content-panel .zend_form input.error,
+.content-panel .zend_form textarea.error {
+    border-color: #EE5F5B;
+    color: #B94A48;
+}
+
+.content-panel .zend_form input.error:focus,
+.content-panel .zend_form textarea.error:focus {
+    border-color:#e9322d;
+    -webkit-box-shadow:0 0 6px #f8b9b7;
+    -moz-box-shadow:0 0 6px #f8b9b7;
+    box-shadow:0 0 6px #f8b9b7;
+}
+
+/*tables */
+table th {
+    background: url('/static/images/subnav-heading-bg.png') top left repeat-x;
+    color : #fff;
+}
+
+table {
+    font-size : 0.9em;
+}
+
+/*latest incidents*/
+
+.latest-incident p{
+    padding : 10px;
+}
+
+.latest-incident .heading a {
+    color : #fff;
+}
+
+.latest-incident .heading {
+    background: url('/static/images/subnav-heading-bg.png') top left repeat-x;
+    color : #fff;
+    height: 32px;
+    line-height: 32px;
+    font-weight: bold;
+    padding : 0px 10px;
+}
+
+.latest-incident .body {
+    background-color : #fff;
+}
+
+/*comments*/
+.comment-form label {
+    float : none;
+    
+}
+
+.comment-form .form-right {
+    width : 100%;
+    margin : 0px !important;
+}
+
+.comment-form .input input,
+.comment-form .input textarea {
+    width : 710px;
+}
+
+.comment-form textarea {
+    height : 100px !important;
+}
+
+.comment-form #submit-label {
+    display : none;
+}
+
+.comment {
+    background-color : #fff;
+    padding : 10px;
+    margin-bottom: 20px;
+}
