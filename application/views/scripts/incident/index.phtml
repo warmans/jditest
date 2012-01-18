@@ -7,7 +7,7 @@
         echo '<div class="latest-incident">';
         echo '<div class="heading"><a href="/incident/read/'.$incident->id.'">Incident #'.$incident->id.' <span class="quiet">('.$incident->date_occurred.')</span></a></div>';
         echo '<div class="body">';
-        echo '<div class="body"><p>'.$incident->explanation.'</p></div>';
+        echo '<div class="body"><p>'.nl2br($incident->explanation).'</p></div>';
         echo '</div>';
         echo '</div>';
     endforeach;

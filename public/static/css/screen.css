@@ -17,7 +17,9 @@ h1, h2 {
 }
 
 .content {
+    float : left;
     margin-top : 10px;
+    padding-bottom : 20px;
     background-color : #fff;
     
     -webkit-box-shadow: 0px 0px 5px rgba(50, 50, 50, 0.75);
@@ -62,8 +64,17 @@ h1, h2 {
     background : url('/static/images/nav-seperator.jpg') center center no-repeat;
 }
 
+
+.sec-col {
+    float : left;
+    clear : none;
+    width : 162px;
+}
+
 .content-panel {
-    width : 720px;
+    float : left;
+    clear : none;
+    width : 710px;
     background-color : #EBEBEB;
     margin-left : 0px !important;
     padding : 10px;
@@ -173,14 +184,17 @@ h1, h2 {
 }
 
 /*tables */
+table {
+    font-size : 0.9em;
+    background-color : #fff;
+}
+
 table th {
     background: url('/static/images/subnav-heading-bg.png') top left repeat-x;
     color : #fff;
 }
 
-table {
-    font-size : 0.9em;
-}
+
 
 /*latest incidents*/
 

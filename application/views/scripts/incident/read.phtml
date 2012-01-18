@@ -18,12 +18,16 @@
     <h2>Comments</h2>
 </div>
 <?php
-foreach($this->comments as $comment):
-    echo '<div class="comment">';
-    echo $comment->content;
-    echo '<div class="author">- '.$comment->author.' | posted '.$comment->date_created.'</div>';
-    echo '</div>';
-endforeach;
+if(count($this->comments)){
+    foreach($this->comments as $comment):
+        echo '<div class="comment">';
+        echo $comment->content;
+        echo '<div class="author">- '.$comment->author.' | posted '.$comment->date_created.'</div>';
+        echo '</div>';
+    endforeach;
+} else {
+    echo '<p>None yet</p>';
+}
 ?>
 <h2>Add Comment</h2>
 <?php
