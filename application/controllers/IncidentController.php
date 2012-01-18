@@ -323,7 +323,12 @@ class IncidentController extends Zend_Controller_Action
                 endforeach;
             }
             
-            $curField->setDecorators(array(new TwitterBootstrap_Form_Decorator_Composite()));
+            $curField->setDecorators(
+                array(
+                    new TwitterBootstrap_Form_Decorator_Composite(),
+                    array(array('elementDiv' => 'HtmlTag'), array('tag' => 'div'))
+                )
+            );
                                                 
             //add to form
             $form->addElement($curField);

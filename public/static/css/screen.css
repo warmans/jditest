@@ -40,15 +40,16 @@ h1, h2 {
 }
 
 .nav {
-    width : 100%;
+    width : 900px;
     height: 36px;
+    padding : 0px 20px;
     background : #D4D4D4 url('/static/images/nav-background.jpg') center left repeat-x;
 }
 
 .nav a {
     height: 36px;
     line-height: 36px;
-    padding : 0px 10px !important;
+    padding : 0px 20px !important;
     background : none !important;
     color : #585858;
     font-weight : bold;
