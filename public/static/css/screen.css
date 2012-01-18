@@ -30,9 +30,10 @@ h1, h2 {
 }
 
 .mast-head{
+    text-align : center;
     height : 130px;
     line-height : 140px;
-    font-size : 3em;
+    font-size : 3.5em;
     color : #8F1C85;
 }
 

@@ -47,7 +47,7 @@ class IncidentController extends Zend_Controller_Action
     public function archiveAction() {
         
         $page = (int)($this->_request->getParam('page')) ?: 0;
-        $numPerPage = 1;
+        $numPerPage = 5;
                 
         $this->view->page = $page;
         $this->view->numPerPage = $numPerPage;
@@ -120,6 +120,7 @@ class IncidentController extends Zend_Controller_Action
         /*existing comments*/
         $incidentCommentsStmnt = $commentTable->select()
             ->from($commentTable)
+            ->where('incident_id = ?', $incidentRecord->id)
             ->order('date_created DESC');
         $this->view->comments = $commentTable->fetchAll($incidentCommentsStmnt);
         
@@ -239,7 +240,7 @@ class IncidentController extends Zend_Controller_Action
         if((bool)$record->save()){
 
             //note succes and exit to read page
-            $this->_flashMessenger->addMessage(array('msg'=>'Incident Updated', 'class'=>'success'));
+            $this->_flashMessenger->addMessage(array('msg'=>'Incident Saved', 'class'=>'success'));
             $this->_redirector->gotoUrlAndExit('/incident/read/'.$record->id);
 
         } else {

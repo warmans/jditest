@@ -36,7 +36,7 @@
                 <?php
             endfor;
         ?>
-        <li class="next <?php echo ($this->totalRecords <= $this->numPerPage * $this->page+1) ? 'disabled' : '';?>">
+        <li class="next <?php echo ($this->totalRecords <= $this->numPerPage * ($this->page+1)) ? 'disabled' : '';?>">
             <a href="/incident/archive/page/<?php echo $this->page+1;?>">Next &rarr;</a>
         </li>
     </ul>
