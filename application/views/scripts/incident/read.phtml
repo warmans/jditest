@@ -9,10 +9,10 @@
 <p><?php echo $this->record->date_resolved;?></p>
 
 <h3>General Explanation</h3>
-<p><?php echo $this->record->explanation;?></p>
+<p><?php echo nl2br($this->record->explanation);?></p>
 
 <h3>Measures Taken</h3>
-<p><?php echo $this->record->measures_taken;?></p>
+<p><?php echo nl2br($this->record->measures_taken);?></p>
 
 <div class="page-header">
     <h2>Comments</h2>
