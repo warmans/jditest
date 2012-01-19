@@ -17,9 +17,9 @@
             echo '<td>'.$record->id.'</td>';
             echo '<td>'.$record->date_created.'</td>';
             echo '<td>'.Util_Timestamp::secondsToLabel($record->getTimeToResolve()).'</td>';
-            echo '<td>'.Util_String::shortenString($this->escape($record->explanation)).'</td>';
+            echo '<td>'.Util_String::shortenString($this->escape($record->explanation), 128).'</td>';
             echo '<td>'.$record->total_comments.'</td>';
-            echo '<td><a class="btn" href="/incident/read/'.$record->id.'">View</a> <a class="btn" href="/incident/update/'.$record->id.'">Edit</a></td>';
+            echo '<td><a class="btn small" href="/incident/read/'.$record->id.'">View</a> <a class="btn small" href="/incident/update/'.$record->id.'">Edit</a></td>';
             echo '</tr>';
         endforeach;
     ?>
