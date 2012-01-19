@@ -8,6 +8,9 @@
 <h3>Date Resolved</h3>
 <p><?php echo $this->record->date_resolved;?></p>
 
+<h3>Total Downtime</h3>
+<p><?php echo Util_Timestamp::secondsToLabel($this->record->elapsed_time);?></p>
+
 <h3>General Explanation</h3>
 <p><?php echo nl2br($this->escape($this->record->explanation));?></p>
 

@@ -10,9 +10,10 @@ abstract class Util_String {
         if (strlen($str) <= $length) {
             return $str;
         } else {
-            $str = wordwrap($str, $length);
+            $missingTextString = '[...]';
+            $str = wordwrap($str, ($length)-strlen($missingTextString));
             $str = substr($str, 0, strpos($str, "\n"));
-            return $str.'[...]';
+            return $str.$missingTextString;
         }
     }
 }

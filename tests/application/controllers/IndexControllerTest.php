@@ -1,9 +1,10 @@
 <?php
 class IndexControllerTest extends ControllerTestCase {
 
-    public function testCanGetDefaultIndexPage(){
+    /*check requests are forwarded properly*/
+    public function testIndexForwarder(){
         $this->dispatch("/");
-        $this->assertController("index");
+        $this->assertController("incident");
         $this->assertAction("index");
         $this->assertResponseCode(200);
     }

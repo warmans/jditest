@@ -15,12 +15,7 @@ class Application_Model_IncidentRow extends ModelValidation_RowAbstract {
         
         /*an issue must be resolved after it occurred - use closure*/
         $this->addValidator('date_resolved', new Zend_Validate_Callback(
-            function($value, $context = null){
-                if(strtotime($value) >= strtotime($context['date_occurred'])){
-                    return TRUE;
-                }                
-                return FALSE;
-            }
+            ModelValidation_Callbacks::dateGreaterThanField('date_occurred')
         ));
         
         /*must  be set*/

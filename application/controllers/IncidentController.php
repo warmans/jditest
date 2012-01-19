@@ -18,11 +18,12 @@ class IncidentController extends Zend_Controller_Action
     }
     
     public function indexAction(){
+        
         /*get table instance*/
         $incidentTable = new Application_Model_IncidentTable();
         
         /*latest three incidents*/
-        $latestStmnt = $this->_getDefaultIncidentStmnt($incidentTable);
+        $latestStmnt = $incidentTable->getDefaultIncidentStmnt();
         $latestStmnt->limit(3); //add limit
         $this->view->latestIncidents =  $incidentTable->fetchAll($latestStmnt);
         
@@ -40,8 +41,7 @@ class IncidentController extends Zend_Controller_Action
                 'Total Comments'=>$totalComments,
             )
         ));
-        
-        
+       
     }
 
     public function archiveAction() {
@@ -60,7 +60,7 @@ class IncidentController extends Zend_Controller_Action
         
         /*get the records*/
         if($totalRecords > 0){
-            $stmnt = $this->_getDefaultIncidentStmnt($incidentTable);
+            $stmnt = $incidentTable->getDefaultIncidentStmnt();
             $stmnt->limit($numPerPage, (max(0, $page))*$numPerPage);
             $this->view->records =  $incidentTable->fetchAll($stmnt);
         } else {
@@ -68,32 +68,7 @@ class IncidentController extends Zend_Controller_Action
         }
         
     }
-    
-    private function _getTableCount($table){
-
-        $countStmnt = $table->select()
-            ->from($table, array('COUNT(*) AS total_records'));
-        return $table->fetchAll($countStmnt)->current()->total_records;
-        
-    }
-    
-    private function _getDefaultIncidentStmnt(Application_Model_IncidentTable $table){        
-        
-        $columns = array();
-        $columns[] = 'id';
-        $columns[] = 'explanation';
-        $columns[] = 'date_created';
-        $columns[] = 'date_occurred';
-        $columns[] = 'date_resolved';
-        $columns[] = '(UNIX_TIMESTAMP(date_resolved) - UNIX_TIMESTAMP(date_occurred)) AS elapsed_time';
-        
-        $latestIncidentStmnt = $table->select()
-            ->from($table, $columns)
-            ->order('date_created DESC');
-        return $latestIncidentStmnt;
-        
-    }
-        
+            
     public function createAction(){
         
         /*get a new record from the DB table*/
@@ -112,19 +87,20 @@ class IncidentController extends Zend_Controller_Action
     }
     
     public function readAction(){
+        
+        /*get incident*/
         $incidentRecord = $this->_getRecordOrFail();
         $this->view->record = $incidentRecord;
         
+        /*get existing comments*/
         $commentTable = new Application_Model_IncidentCommentTable();
-        
-        /*existing comments*/
         $incidentCommentsStmnt = $commentTable->select()
             ->from($commentTable)
             ->where('incident_id = ?', $incidentRecord->id)
             ->order('date_created DESC');
         $this->view->comments = $commentTable->fetchAll($incidentCommentsStmnt);
         
-        /*new comment*/
+        /*new comment - required for form validaiton*/
         $newComment = $commentTable->fetchNew();
         
         $form = $this->_getCommentForm($newComment);
@@ -155,7 +131,6 @@ class IncidentController extends Zend_Controller_Action
             }
         }
                         
-        
         $this->view->commentForm = $form;
     }
     
@@ -207,8 +182,12 @@ class IncidentController extends Zend_Controller_Action
         }
         
         $incidentTable = new Application_Model_IncidentTable();
-        $incidentsFound = $incidentTable->find($id);
         
+        $stmnt = $incidentTable->getDefaultIncidentStmnt();
+        $stmnt->where('id = ?', $id);
+        $stmnt->limit(1);
+                                
+        $incidentsFound = $incidentTable->fetchAll($stmnt);
         if(count($incidentsFound) < 1){
             //note succes and exit to read page
             $this->_flashMessenger->addMessage(array('msg'=>'Incident could not be found', 'class'=>'error'));
@@ -336,6 +315,14 @@ class IncidentController extends Zend_Controller_Action
         endforeach;
         
         return $form;
+    }
+    
+    private function _getTableCount($table){
+
+        $countStmnt = $table->select()
+            ->from($table, array('COUNT(*) AS total_records'));
+        return $table->fetchAll($countStmnt)->current()->total_records;
+        
     }
     
 }
