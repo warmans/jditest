@@ -5,9 +5,8 @@
 <table class="condensed-table zebra-striped">
     <tr>
         <th>ID</th>
-        <th>Logged</th>
+        <th>Occurred</th>
         <th>Downtime</th>
-        <th>Description</th>
         <th>Comments</th>
         <th style="width : 120px;">Actions</th>
     </tr>
@@ -15,9 +14,8 @@
         foreach($this->records as $record):
             echo '<tr>';
             echo '<td>'.$record->id.'</td>';
-            echo '<td>'.$record->date_created.'</td>';
+            echo '<td>'.date('D jS M Y h:i A', strtotime($record->date_occurred)).'</td>';
             echo '<td>'.Util_Timestamp::secondsToLabel($record->getTimeToResolve()).'</td>';
-            echo '<td>'.Util_String::shortenString($this->escape($record->explanation), 128).'</td>';
             echo '<td>'.$record->total_comments.'</td>';
             echo '<td><a class="btn small" href="/incident/read/'.$record->id.'">View</a> <a class="btn small" href="/incident/update/'.$record->id.'">Edit</a></td>';
             echo '</tr>';

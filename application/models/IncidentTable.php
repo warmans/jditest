@@ -19,7 +19,7 @@ class Application_Model_IncidentTable extends Zend_Db_Table_Abstract {
         
         $incidentStmnt = $this->select()
             ->from($this)
-            ->order('date_created DESC');
+            ->order('date_occurred DESC');
         
         return $incidentStmnt;
     }

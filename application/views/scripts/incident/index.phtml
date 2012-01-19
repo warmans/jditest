@@ -5,7 +5,7 @@
 <?php
     foreach($this->latestIncidents as $incident):
         echo '<div class="latest-incident">';
-        echo '<div class="heading"><a href="/incident/read/'.$incident->id.'">Incident #'.$incident->id.' <span class="quiet">('.$incident->date_occurred.')</span></a></div>';
+        echo '<div class="heading"><a href="/incident/read/'.$incident->id.'">Incident #'.$incident->id.' <span class="quiet">('.date('D jS M Y h:i A', strtotime($incident->date_occurred)).')</span></a></div>';
         echo '<div class="body">';
         echo '<div class="body"><p>'.nl2br($this->escape($incident->explanation)).'</p></div>';
         echo '</div>';

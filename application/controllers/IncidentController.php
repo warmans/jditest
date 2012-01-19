@@ -27,33 +27,10 @@ class IncidentController extends Zend_Controller_Action
         $latestStmnt->limit(3); //add limit
         $this->view->latestIncidents =  $incidentTable->fetchAll($latestStmnt);
         
-        /*total incidents*/
-        $totalIncidents = $this->_getTableCount($incidentTable);
-                
-        /*total comments*/
-        $commentTable = new Application_Model_IncidentCommentTable();
-        $totalComments = $this->_getTableCount($commentTable);
-        
-        /*average time taken to resolve a incident*/
-        $avgTimeStmnt = $incidentTable->getAdapter()
-            ->query('SELECT AVG(et.time_taken) as avg_time 
-                     FROM (
-                        SELECT (UNIX_TIMESTAMP(date_resolved) - UNIX_TIMESTAMP(date_occurred)) AS time_taken
-                        FROM `incident`) AS et');
-        $averageTimeResult = $avgTimeStmnt->fetchAll();
-                        
-        /*set right col*/
-        $this->view->helpTitle = 'System Stats';
-        $this->view->helpContent = $this->view->partial('partials/systemStats.phtml', array(
-            'stats'=>array(
-                'Incidents'=>$totalIncidents,
-                'Comments'=>$totalComments,
-                'Avg Resolution Time'=>Util_Timestamp::secondsToLabel($averageTimeResult[0]['avg_time'])
-            )
-        ));
-       
+        /*add stats to sidebar*/
+        $this->_addSystemStatsBlockToView();
     }
-
+    
     public function archiveAction() {
         
         $page = (int)($this->_request->getParam('page')) ?: 0;
@@ -83,6 +60,40 @@ class IncidentController extends Zend_Controller_Action
             $this->view->records = array();
         }
         
+        /*add stats to sidebar*/
+        $this->_addSystemStatsBlockToView();
+        
+    }
+    
+    private function _addSystemStatsBlockToView(){
+        
+        /*get table instance*/
+        $incidentTable = new Application_Model_IncidentTable();
+        
+        /*total incidents*/
+        $totalIncidents = $this->_getTableCount($incidentTable);
+                
+        /*total comments*/
+        $commentTable = new Application_Model_IncidentCommentTable();
+        $totalComments = $this->_getTableCount($commentTable);
+        
+        /*average time taken to resolve a incident*/
+        $avgTimeStmnt = $incidentTable->getAdapter()
+            ->query('SELECT AVG(et.time_taken) as avg_time 
+                     FROM (
+                        SELECT (UNIX_TIMESTAMP(date_resolved) - UNIX_TIMESTAMP(date_occurred)) AS time_taken
+                        FROM `incident`) AS et');
+        $averageTimeResult = $avgTimeStmnt->fetchAll();
+                        
+        /*set right col*/
+        $this->view->helpTitle = 'System Stats';
+        $this->view->helpContent = $this->view->partial('partials/systemStats.phtml', array(
+            'stats'=>array(
+                'Incidents'=>$totalIncidents,
+                'Comments'=>$totalComments,
+                'Avg Resolution Time'=>Util_Timestamp::secondsToLabel($averageTimeResult[0]['avg_time'])
+            )
+        ));
     }
             
     public function createAction(){
