@@ -34,11 +34,21 @@ class IncidentController extends Zend_Controller_Action
         $commentTable = new Application_Model_IncidentCommentTable();
         $totalComments = $this->_getTableCount($commentTable);
         
+        /*average time taken to resolve a incident*/
+        $avgTimeStmnt = $incidentTable->getAdapter()
+            ->query('SELECT AVG(et.time_taken) as avg_time 
+                     FROM (
+                        SELECT (UNIX_TIMESTAMP(date_resolved) - UNIX_TIMESTAMP(date_occurred)) AS time_taken
+                        FROM `incident`) AS et');
+        $averageTimeResult = $avgTimeStmnt->fetchAll();
+                        
+        /*set right col*/
         $this->view->helpTitle = 'System Stats';
         $this->view->helpContent = $this->view->partial('partials/systemStats.phtml', array(
             'stats'=>array(
-                'Total Incidents'=>$totalIncidents,
-                'Total Comments'=>$totalComments,
+                'Incidents'=>$totalIncidents,
+                'Comments'=>$totalComments,
+                'Avg Resolution Time'=>Util_Timestamp::secondsToLabel($averageTimeResult[0]['avg_time'])
             )
         ));
        
@@ -61,6 +71,12 @@ class IncidentController extends Zend_Controller_Action
         /*get the records*/
         if($totalRecords > 0){
             $stmnt = $incidentTable->getDefaultIncidentStmnt();
+            
+            /*add count of comments*/
+            $stmnt->setIntegrityCheck(false)
+                ->joinLeft(array('ic' => 'incident_comment'), 'ic.incident_id = incident.id', array('COUNT(ic.id) as total_comments'))
+                ->group('incident.id');
+            
             $stmnt->limit($numPerPage, (max(0, $page))*$numPerPage);
             $this->view->records =  $incidentTable->fetchAll($stmnt);
         } else {
