@@ -10,22 +10,18 @@ class Application_Model_IncidentTable extends Zend_Db_Table_Abstract {
     protected $_rowClass = 'Application_Model_IncidentRow';
     
     
+    /**
+     * Just get a default select object for this table.
+     * 
+     * @return Zend_Db_Select object
+     */
     public function getDefaultIncidentStmnt(){        
         
-        $columns = array();
-        $columns[] = 'id';
-        $columns[] = 'explanation';
-        $columns[] = 'measures_taken';
-        $columns[] = 'date_created';
-        $columns[] = 'date_occurred';
-        $columns[] = 'date_resolved';
-        
         $incidentStmnt = $this->select()
-            ->from($this, $columns)
+            ->from($this)
             ->order('date_created DESC');
         
         return $incidentStmnt;
-        
     }
     
 }
