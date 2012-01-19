@@ -52,15 +52,17 @@
                     </div>
                     <div class="content-panel">
                         <?php
-                        foreach($this->messages as $message):
-                            if(is_array($message)){
-                                echo '<div class="alert-message '.$message['class'].'">';
-                                echo $message['msg'];
-                                echo '</div>';
-                            } else {
-                                echo '<div clas="alert-message info">'.$message.'</div>';
-                            }
-                        endforeach;
+                        if($this->messages){
+                            foreach($this->messages as $message):
+                                if(is_array($message)){
+                                    echo '<div class="alert-message '.$message['class'].'">';
+                                    echo $message['msg'];
+                                    echo '</div>';
+                                } else {
+                                    echo '<div clas="alert-message info">'.$message.'</div>';
+                                }
+                            endforeach;
+                        }
                         ?>
                         <?php echo $this->layout()->content; ?>
                     </div>
