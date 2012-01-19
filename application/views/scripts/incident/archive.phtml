@@ -8,6 +8,7 @@
         <th>Logged</th>
         <th>Downtime</th>
         <th>Description</th>
+        <th>Comments</th>
         <th style="width : 120px;">Actions</th>
     </tr>
     <?php
@@ -17,6 +18,7 @@
             echo '<td>'.$record->date_created.'</td>';
             echo '<td>'.Util_Timestamp::secondsToLabel($record->getTimeToResolve()).'</td>';
             echo '<td>'.Util_String::shortenString($this->escape($record->explanation)).'</td>';
+            echo '<td>'.$record->total_comments.'</td>';
             echo '<td><a class="btn" href="/incident/read/'.$record->id.'">View</a> <a class="btn" href="/incident/update/'.$record->id.'">Edit</a></td>';
             echo '</tr>';
         endforeach;
