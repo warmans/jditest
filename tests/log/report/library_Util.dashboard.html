@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title></title>
+    <title>library/Util</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <!--[if IE]><script src="excanvas.compressed.js"></script><![endif]-->
     <script src="RGraph.common.core.js" ></script>
@@ -13,8 +13,8 @@
 
   <body>
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
-      <tr><td class="title"></td></tr>
-      <tr><td><div align="center"><p><a href="index.html">Back to Code Coverage report</a></p></div></td></tr>
+      <tr><td class="title">library/Util</td></tr>
+      <tr><td><div align="center"><p><a href="library_Util.html">Back to Code Coverage report</a></p></div></td></tr>
       <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""></td></tr>
     </table>
 
@@ -27,7 +27,7 @@
             <h2>Class Coverage Distribution</h2>
             <canvas id="classCoverageDistribution" width="475" height="200"></canvas>
             <script>
-            var ccd = new RGraph.Bar('classCoverageDistribution', [1,0,0,0,1,0,0,0,0,2,1,8]);
+            var ccd = new RGraph.Bar('classCoverageDistribution', [0,0,0,0,0,0,0,0,0,0,1,1]);
             ccd.Set('chart.background.barcolor1', 'white');
             ccd.Set('chart.background.barcolor2', 'white');
             ccd.Set('chart.colors', ['blue']);
@@ -44,7 +44,7 @@
             <h2>Class Complexity</h2>
             <canvas id="classComplexity" width="475" height="200"></canvas>
             <script>
-            var cc = new RGraph.Scatter('classComplexity', [[100,3,"blue","Bootstrap"],[0,9,"blue","ErrorController"],[82.558139534884,27,"blue","IncidentController"],[100,2,"blue","IndexController"],[100,1,"blue","Application_Model_IncidentCommentRow"],[100,0,"blue","Application_Model_IncidentCommentTable"],[100,1,"blue","Application_Model_IncidentRow"],[100,1,"blue","Application_Model_IncidentTable"],[100,4,"blue","ModelValidation_Callbacks"],[37.931034482759,16,"blue","ModelValidation_RowAbstract"],[85.964912280702,14,"blue","TwitterBootstrap_Form_Decorator_Composite"],[100,2,"blue","Util_String"],[90,7,"blue","Util_Timestamp"]]);
+            var cc = new RGraph.Scatter('classComplexity', [[100,2,"blue","Util_String"],[90,7,"blue","Util_Timestamp"]]);
             cc.Set('chart.xmax', 100);
             cc.Set('chart.background.barcolor1', 'white');
             cc.Set('chart.background.barcolor2', 'white');
@@ -60,10 +60,6 @@
           <td valign="top">
             <h2>Top Project Risks</h2>
             <ul>
-              <li><a href="application_controllers_ErrorController.php.html#3">ErrorController</a> (90)</li>
-              <li><a href="library_ModelValidation_RowAbstract.php.html#8">ModelValidation_RowAbstract</a> (77)</li>
-              <li><a href="application_controllers_IncidentController.php.html#3">IncidentController</a> (30)</li>
-              <li><a href="library_TwitterBootstrap_Form_Decorator_Composite.php.html#8">TwitterBootstrap_Form_Decorator_Composite</a> (14)</li>
               <li><a href="library_Util_Timestamp.php.html#7">Util_Timestamp</a> (7)</li>
 
             </ul>
@@ -72,16 +68,7 @@
           <td valign="top">
             <h2>Least Tested Methods</h2>
             <ul>
-              <li><a href="application_controllers_ErrorController.php.html#6">ErrorController::errorAction</a> (0%)</li>
-              <li><a href="library_ModelValidation_RowAbstract.php.html#49">ModelValidation_RowAbstract::getValidationErrorsAsString</a> (0%)</li>
-              <li><a href="library_ModelValidation_RowAbstract.php.html#53">ModelValidation_RowAbstract::_isValid</a> (0%)</li>
-              <li><a href="library_ModelValidation_RowAbstract.php.html#69">ModelValidation_RowAbstract::save</a> (0%)</li>
-              <li><a href="library_ModelValidation_RowAbstract.php.html#37">ModelValidation_RowAbstract::_addValidationError</a> (0%)</li>
-              <li><a href="library_ModelValidation_RowAbstract.php.html#45">ModelValidation_RowAbstract::getValidationErrors</a> (0%)</li>
-              <li><a href="application_controllers_IncidentController.php.html#200">IncidentController::destroyAction</a> (0%)</li>
-              <li><a href="application_controllers_ErrorController.php.html#44">ErrorController::getLog</a> (0%)</li>
-              <li><a href="application_controllers_IncidentController.php.html#204">IncidentController::_handleIncidentForm</a> (14%)</li>
-              <li><a href="application_controllers_IncidentController.php.html#175">IncidentController::_getRecordOrFail</a> (60%)</li>
+              <li><a href="library_Util_Timestamp.php.html#9">Util_Timestamp::secondsToLabel</a> (88%)</li>
 
             </ul>
           </td>
