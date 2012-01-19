@@ -19,7 +19,6 @@ class Application_Model_IncidentTable extends Zend_Db_Table_Abstract {
         $columns[] = 'date_created';
         $columns[] = 'date_occurred';
         $columns[] = 'date_resolved';
-        $columns[] = '(UNIX_TIMESTAMP(date_resolved) - UNIX_TIMESTAMP(date_occurred)) AS elapsed_time';
         
         $incidentStmnt = $this->select()
             ->from($this, $columns)

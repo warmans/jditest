@@ -72,7 +72,7 @@
             </table>
           </td>
           <td class="coverPerHi">100.00%</td>
-          <td class="coverNumHi">1 / 1</td>
+          <td class="coverNumHi">2 / 2</td>
           <td class="crap"><acronym title="Change Risk Anti-Patterns (CRAP) Index">CRAP</acronym></td>
           <td class="coverBar" align="center" width="100">
             <table border="0" cellspacing="0" cellpadding="1">
@@ -82,7 +82,7 @@
             </table>
           </td>
           <td class="coverPerHi">100.00%</td>
-          <td class="coverNumHi">10 / 10</td>
+          <td class="coverNumHi">11 / 11</td>
         </tr>
 
         <tr>
@@ -107,7 +107,7 @@
             </table>
           </td>
           <td class="coverPerHi">100.00%</td>
-          <td class="coverNumHi">1 / 1</td>
+          <td class="coverNumHi">2 / 2</td>
           <td class="crap"></td>
           <td class="coverBar" align="center" width="100">
             <table border="0" cellspacing="0" cellpadding="1">
@@ -117,7 +117,7 @@
             </table>
           </td>
           <td class="coverPerHi">100.00%</td>
-          <td class="coverNumHi">10 / 10</td>
+          <td class="coverNumHi">11 / 11</td>
         </tr>
 
         <tr>
@@ -141,6 +141,29 @@
           </td>
           <td class="coverPerHi">100.00%</td>
           <td class="coverNumHi">9 / 9</td>
+        </tr>
+
+        <tr>
+          <td class="coverFile" colspan="4">&nbsp;<a href="#28">getTimeToResolve()</a></td>
+          <td class="coverBar" align="center" width="100">
+            <table border="0" cellspacing="0" cellpadding="1">
+              <tr>
+                <td class="coverBarOutline"><img src="chameleon.png" width="100" height="10" alt="100.00%"><img src="snow.png" width="0" height="10" alt="100.00%"></td>
+              </tr>
+            </table>
+          </td>
+          <td class="coverPerHi">100.00%</td>
+          <td class="coverNumHi">1 / 1</td>
+          <td class="crap">1</td>
+          <td class="coverBar" align="center" width="100">
+            <table border="0" cellspacing="0" cellpadding="1">
+              <tr>
+                <td class="coverBarOutline"><img src="chameleon.png" width="100" height="10" alt="100.00%"><img src="snow.png" width="0" height="10" alt="100.00%"></td>
+              </tr>
+            </table>
+          </td>
+          <td class="coverPerHi">100.00%</td>
+          <td class="coverNumHi">1 / 1</td>
         </tr>
 
 
@@ -183,6 +206,10 @@
 <span class="lineNum" id="container25"><a name="25"></a><a href="#25" id="line25">      25</a> </span><span class="lineCov">              2 : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="default">parent</span><span class="keyword">::</span><span class="default">_initValidators</span><span class="keyword">(</span><span class="keyword">)</span><span class="keyword">;</span>                                                                     </span>
 <span class="lineNum" id="container26"><a name="26"></a><a href="#26" id="line26">      26</a> </span><span class="lineCov">              2 : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">}</span>                                                                                                  </span>
 <span class="lineNum" id="container27"><a name="27"></a><a href="#27" id="line27">      27</a> </span>                : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span>                                                                                                       
+<span class="lineNum" id="container28"><a name="28"></a><a href="#28" id="line28">      28</a> </span>                : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">public</span><span class="default">&nbsp;</span><span class="keyword">function</span><span class="default">&nbsp;</span><span class="default">getTimeToResolve</span><span class="keyword">(</span><span class="keyword">)</span><span class="keyword">{</span>                                                                
+<span class="lineNum" id="container29"><a name="29"></a><a href="#29" id="line29">      29</a> </span><span class="lineCov">              2 : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">return</span><span class="default">&nbsp;</span><span class="default">strtotime</span><span class="keyword">(</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">date_resolved</span><span class="keyword">)</span><span class="default">&nbsp;</span><span class="keyword">-</span><span class="default">&nbsp;</span><span class="default">strtotime</span><span class="keyword">(</span><span class="default">$this</span><span class="keyword">-&gt;</span><span class="default">date_occurred</span><span class="keyword">)</span><span class="keyword">;</span>                      </span>
+<span class="lineNum" id="container30"><a name="30"></a><a href="#30" id="line30">      30</a> </span><span class="lineDeadCode">                : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">}</span>                                                                                                  </span>
+<span class="lineNum" id="container31"><a name="31"></a><a href="#31" id="line31">      31</a> </span>                : <span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span>                                                                                                       
 
 </pre>
         </td>
@@ -191,7 +218,7 @@
 
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""></td></tr>
-      <tr><td class="versionInfo">Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 1.0.5</a> using <a href="http://www.php.net/" target="_top">PHP 5.3.5</a> and PHPUnit 3.5.15 at Thu Jan 19 21:09:38 CET 2012.</td></tr>
+      <tr><td class="versionInfo">Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 1.0.5</a> using <a href="http://www.php.net/" target="_top">PHP 5.3.5</a> and PHPUnit 3.5.15 at Thu Jan 19 22:38:09 CET 2012.</td></tr>
     </table>
 
     <br />
@@ -249,6 +276,11 @@
         "panel26": {
           "header": "2 tests cover line 26",
           "body": "<ul><li class=\"testPassed\">IncidentControllerTest::testCreate</li><li class=\"testPassed\">IncidentControllerTest::testUpdate</li></ul>",
+          "footer": ""
+        },
+        "panel29": {
+          "header": "2 tests cover line 29",
+          "body": "<ul><li class=\"testPassed\">IncidentControllerTest::testArchive</li><li class=\"testPassed\">IncidentControllerTest::testRead</li></ul>",
           "footer": ""
         },
       "dummy": ""

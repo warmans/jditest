@@ -25,4 +25,8 @@ class Application_Model_IncidentRow extends ModelValidation_RowAbstract {
         parent::_initValidators();
     }
     
+    public function getTimeToResolve(){
+        return strtotime($this->date_resolved) - strtotime($this->date_occurred);
+    }
+    
 }

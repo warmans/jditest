@@ -15,7 +15,7 @@
             echo '<tr>';
             echo '<td>'.$record->id.'</td>';
             echo '<td>'.$record->date_created.'</td>';
-            echo '<td>'.Util_Timestamp::secondsToLabel($record->elapsed_time).'</td>';
+            echo '<td>'.Util_Timestamp::secondsToLabel($record->getTimeToResolve()).'</td>';
             echo '<td>'.Util_String::shortenString($this->escape($record->explanation)).'</td>';
             echo '<td><a class="btn" href="/incident/read/'.$record->id.'">View</a> <a class="btn" href="/incident/update/'.$record->id.'">Edit</a></td>';
             echo '</tr>';
